@@ -28,4 +28,36 @@ private List<Voto>listaVoti;  //ATTENZIONE all'import suggerito che non è il pr
 	 return s;
 	 //return this.listaVoti.toString(); //--> non va bene perchè li stampa tutti su una riga cosi
  }
-}
+ 
+	 //2) STAMPA TUTTI I CORSI CON I VOTI UGUALI A 25
+ //ho vari modi es. public void, public string , public List , public Libretto
+ 
+ //public List --> restituisce l'arraylist, espone cosa è fatto ed è più difficile se dovessi modificare in futuro
+ 
+ public List<Voto>listaVotiUguali(int punteggio) {
+	 
+	 List<Voto>risultato= new ArrayList<>(); //creo nuova lista vuota che chiamo risultato
+	 for(Voto v: this.listaVoti) {
+		 if(v.getVoto()==punteggio) {
+			 risultato.add(v);
+		 }
+	 }
+	 return risultato;
+ }
+ 
+//public Libretto --> restituisce l'intero oggetto libretto che soddisfa il requisito 
+ 
+ public Libretto votiUguali(int punteggio) {
+		 Libretto risultato = new Libretto();   //creo un nuovo libretto che chiamo risultato
+		 for(Voto v: this.listaVoti) {
+			 if(v.getVoto()==punteggio) {
+				 risultato.add(v);  //uso il metodo add senza problemi perchè ho creato il metodo add in Libretto!!!
+			 }
+		 }
+		 return risultato;
+	 }
+	 
+	 
+	 
+ }
+
