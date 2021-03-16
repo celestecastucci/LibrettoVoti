@@ -2,6 +2,8 @@ package it.polito.tdp.librettovoti;
 
 import javafx.application.Application;
 import static javafx.application.Application.launch;
+
+import it.polito.tdp.librettovoti.model.Libretto;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -12,8 +14,21 @@ public class EntryPoint extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Scene.fxml"));
+     
+    	/**
+    	 * EFFETTUO QUESTE MODIFICHE PER LA CLASSE ENTRYPOINT (riga dalla 23 alla 28)
+    	 * NELLA CLASSE CONTROLLER dichiaro il model e il suo set (riga 15 e 31)
+    	 * ATTENZIONE DEVO FARE ALCUNI IMPORT!
+    	 */
+    	
+    	FXMLLoader loader= new FXMLLoader(getClass().getResource("/fxml/Scene.fxml")); //creo una classe che può ricevere cosa riceveva root
+    	Parent root = loader.load();
+    	FXMLController controller=loader.getController();
         
+        Libretto model= new Libretto();
+         controller.setModel(model);
+         
+         
         Scene scene = new Scene(root);
         scene.getStylesheets().add("/styles/Styles.css");
         

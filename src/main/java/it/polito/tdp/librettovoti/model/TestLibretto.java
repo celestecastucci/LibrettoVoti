@@ -23,10 +23,30 @@ public class TestLibretto {
 	
 	
 	//per il test creo una lista di voti che è data dalla listaVotiUguali in Libretto e ha come punteggio 25:
+	//TEST VOTI UGUALI AL PUNTEGGIO PASSATO
 	List<Voto>venticinque= libretto.listaVotiUguali(25);  //stampa arrayList
 	System.out.println(venticinque);
 	
 	Libretto librettoVenticinque= libretto.votiUguali(25); //stampa il libretto 
 	System.out.println(librettoVenticinque);
+	
+	
+	//TEST RICERCA CORSO
+	Voto analisi1= libretto.ricercaCorso("Analisi 1");
+	System.out.println(analisi1);
+	
+	Voto analisi3= libretto.ricercaCorso("Analisi 3");
+	System.out.println(analisi3);
+	
+	//TEST CONFLITTO E DOPPIONE
+	Voto chimica=libretto.ricercaCorso("Chimica");
+	Voto chimica_doppio= new Voto("Chimica", 25, LocalDate.of(2019, 9, 15));
+	Voto chimica_conflitto= new Voto("Chimica", 29, LocalDate.of(2019, 9, 15));
+System.out.println(chimica + " doppione di " + chimica_doppio + "? -> "+libretto.esisteDuplicato(chimica_doppio));
+System.out.println(chimica + " doppione di " + chimica_conflitto + "? -> "+ libretto.esisteDuplicato(chimica_conflitto));
+System.out.println(chimica + " conflitto di " + chimica_doppio + "? -> "+libretto.esisteConflitto(chimica_doppio));
+System.out.println(chimica + " conflitto di " + chimica_conflitto + "? -> "+libretto.esisteConflitto(chimica_conflitto));
+
 	}
+	
 }
